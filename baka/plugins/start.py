@@ -7,7 +7,7 @@ from baka.config import BOT_NAME, START_IMG_URL, HELP_IMG_URL, SUPPORT_GROUP, SU
 from baka.utils import ensure_user_exists, get_mention, track_group, log_to_channel, SUDO_USERS
 
 # --- 🖼️ IMAGES ---
-SUDO_IMG = "https://files.catbox.moe/gyi5iu.jpg"
+SUDO_IMG = "https://i.ibb.co/cKWvyMFR/IMG-20260303-120051-514.jpg"
 
 # --- ⌨️ KEYBOARDS ---
 
@@ -194,4 +194,5 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     try: await query.message.edit_media(InputMediaPhoto(media=target_photo, caption=text, parse_mode=ParseMode.HTML), reply_markup=kb)
     except: await query.message.edit_caption(caption=text, parse_mode=ParseMode.HTML, reply_markup=kb)
+
 
