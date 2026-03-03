@@ -228,12 +228,6 @@ if __name__ == '__main__':
         # 5. Riddle Answer - Group 3
         app_bot.add_handler(MessageHandler(filters.TEXT & filters.ChatType.GROUPS & ~filters.COMMAND, riddle.check_riddle_answer), group=3)
         
-        # 5.5. Anonymous Secrets Handlers - Group 3.5 (before AI chat)
-        app_bot.add_handler(MessageHandler(filters.TEXT & filters.ChatType.GROUPS & ~filters.COMMAND, anonymous_secrets.unlock_handler), group=3)
-        app_bot.add_handler(MessageHandler(filters.TEXT & filters.ChatType.GROUPS & ~filters.COMMAND, anonymous_secrets.confess_support_handler), group=3)
-        app_bot.add_handler(MessageHandler(filters.TEXT & filters.ChatType.GROUPS & ~filters.COMMAND, anonymous_secrets.message_tracker), group=3)
-        app_bot.add_handler(MessageHandler(filters.TEXT & filters.ChatType.GROUPS & ~filters.COMMAND, anonymous_secrets.tea_spill_reply_handler), group=3)
-        
         # 6. AI Chat (General Talk & Stickers) - Group 4
         # Must be later so it doesn't reply to game inputs
         app_bot.add_handler(MessageHandler((filters.TEXT | filters.Sticker.ALL) & ~filters.COMMAND, chatbot.ai_message_handler), group=4)
@@ -245,5 +239,6 @@ if __name__ == '__main__':
         
         # 8. Start Polling
         app_bot.run_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
+
 
 
