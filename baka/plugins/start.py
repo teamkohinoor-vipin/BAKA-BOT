@@ -38,7 +38,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     track_group(chat, user)
     
     caption = (
-        f"👋 <b>Kon'nichiwa</b> {get_mention(user)}! (⁠≧⁠▽⁠≦⁠)\n\n"
+        f"👋 <b>Hello</b> {get_mention(user)}! (⁠≧⁠▽⁠≦⁠)\n\n"
         f"『 <b>{BOT_NAME}</b> 』\n"
         f"<i>The Aesthetic AI-Powered RPG Bot!</i> 🌸\n\n"
         f"🎮 <b>𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:</b>\n"
@@ -194,3 +194,4 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     try: await query.message.edit_media(InputMediaPhoto(media=target_photo, caption=text, parse_mode=ParseMode.HTML), reply_markup=kb)
     except: await query.message.edit_caption(caption=text, parse_mode=ParseMode.HTML, reply_markup=kb)
+
