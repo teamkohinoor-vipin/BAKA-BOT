@@ -41,9 +41,8 @@ from baka.utils import track_group, log_to_channel, BOT_NAME
 from baka.plugins import (
     start, economy, game, admin, broadcast, fun, events, 
     welcome, ping, chatbot, riddle, social, ai_media, 
-    waifu, collection, shop, daily, anonymous_secrets
+    waifu, collection, shop, daily
 )
-
 # --- FLASK SERVER (Health Check) ---
 app = Flask(__name__)
 
@@ -196,28 +195,6 @@ if __name__ == '__main__':
         app_bot.add_handler(CommandHandler("ask", chatbot.ask_ai))           
         app_bot.add_handler(CallbackQueryHandler(chatbot.chatbot_callback, pattern="^ai_"))
         
-        # --- Anonymous Secrets ---
-        app_bot.add_handler(CommandHandler("secret", anonymous_secrets.secret_command))
-        app_bot.add_handler(CommandHandler("roast", anonymous_secrets.roast_command))
-        app_bot.add_handler(CommandHandler("confess", anonymous_secrets.confess_command))
-        app_bot.add_handler(CommandHandler("crush", anonymous_secrets.crush_command))
-        app_bot.add_handler(CommandHandler("spoll", anonymous_secrets.spoll_command))
-        app_bot.add_handler(CommandHandler("truthordare", anonymous_secrets.truth_dare_command))
-        app_bot.add_handler(CommandHandler("wyr", anonymous_secrets.wyr_command))
-        app_bot.add_handler(CommandHandler("compliment", anonymous_secrets.compliment_command))
-        app_bot.add_handler(CommandHandler("story", anonymous_secrets.story_command))
-        app_bot.add_handler(CommandHandler("continue", anonymous_secrets.continue_story_command))
-        app_bot.add_handler(CommandHandler("rate", anonymous_secrets.rate_command))
-        app_bot.add_handler(CommandHandler("hotornot", anonymous_secrets.hotornot_command))
-        app_bot.add_handler(CommandHandler("neverhaveiever", anonymous_secrets.neverhaveiever_command))
-        app_bot.add_handler(CallbackQueryHandler(anonymous_secrets.vote_handler, pattern="^vote_"))
-        app_bot.add_handler(CallbackQueryHandler(anonymous_secrets.react_handler, pattern="^react_"))
-        app_bot.add_handler(CallbackQueryHandler(anonymous_secrets.truth_dare_complete_handler, pattern="^td_complete_"))
-        app_bot.add_handler(CallbackQueryHandler(anonymous_secrets.wyr_vote_handler, pattern="^wyr_"))
-        app_bot.add_handler(CallbackQueryHandler(anonymous_secrets.rate_handler, pattern="^rate_"))
-        app_bot.add_handler(CallbackQueryHandler(anonymous_secrets.hotornot_vote_handler, pattern="^hot_"))
-        app_bot.add_handler(CallbackQueryHandler(anonymous_secrets.neverhaveiever_vote_handler, pattern="^nhe_")) 
-        
         # --- Admin & System ---
         app_bot.add_handler(CommandHandler("broadcast", broadcast.broadcast))
         app_bot.add_handler(CommandHandler("sudo", admin.sudo_help))
@@ -268,4 +245,5 @@ if __name__ == '__main__':
         
         # 8. Start Polling
         app_bot.run_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
+
 
