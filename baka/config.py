@@ -41,10 +41,10 @@ GIT_TOKEN = os.getenv("GIT_TOKEN", "")
 # Images & Links
 START_IMG_URL = os.getenv("START_IMG_URL", "https://telegra.ph/file/5e5480760e412bd402e88.jpg") 
 HELP_IMG_URL = os.getenv("HELP_IMG_URL", "https://files.catbox.moe/5g37fy.jpg") 
-WELCOME_IMG_URL = os.getenv("WELCOME_IMG_URL", "https://files.catbox.moe/gyi5iu.jpg") 
+WELCOME_IMG_URL = os.getenv("WELCOME_IMG_URL", "https://i.ibb.co/cKWvyMFR/IMG-20260303-120051-514.jpg") 
 
-SUPPORT_GROUP = os.getenv("SUPPORT_GROUP", "https://t.me/brahix_support")
-SUPPORT_CHANNEL = os.getenv("SUPPORT_CHANNEL", "https://t.me/about_brahix")
+SUPPORT_GROUP = os.getenv("SUPPORT_GROUP", "https://t.me/snowie_chats")
+SUPPORT_CHANNEL = os.getenv("SUPPORT_CHANNEL", "https://t.me/btbb_era")
 OWNER_LINK = os.getenv("OWNER_LINK", "https://t.me/brahix")
 
 # IDs
@@ -136,3 +136,4 @@ SHOP_ITEMS = [
     {"id": "galaxy", "name": "🌌 Milky Way", "price": 5000000000, "type": "flex", "buff": 0},
     {"id": "blackhole", "name": "🕳️ Black Hole", "price": 9999999999, "type": "flex", "buff": 0},
 ]
+
