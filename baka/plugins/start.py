@@ -32,14 +32,15 @@ def get_back_keyboard():
 # --- 🚀 COMMANDS ---
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
     user = update.effective_user
     chat = update.effective_chat
-    ensure_user_exists(user)
-    track_group(chat, user)
-    
+
+    bot_name = context.bot.first_name   # 👈 YAHAN DAALO
+
     caption = (
-        f"👋 <b>Hello</b> {get_mention(user)}! (⁠≧⁠▽⁠≦⁠)\n\n"
-        f"『 <b>{BOT_NAME}</b> 』\n"
+        f"👋 <b>Hello</b> {get_mention(user)}! (≧▽≦)\n\n"
+        f"『 <b>{bot_name}</b> 』\n"
         f"<i>The Aesthetic AI-Powered RPG Bot!</i> 🌸\n\n"
         f"🎮 <b>𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:</b>\n"
         f"‣ <b>RPG:</b> Kill, Rob (100%), Protect\n"
@@ -66,9 +67,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await log_to_channel(context.bot, "command", {"user": f"{get_mention(user)} (`{user.id}`)", "action": "Started Bot", "chat": "Private"})
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    bot_name = context.bot.first_name
+
     await update.message.reply_photo(
         photo=HELP_IMG_URL,
-        caption=f"📖 <b>{BOT_NAME} 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐃𝐢𝐚𝐫𝐲</b> 🌸\n\n<i>Select a category below to explore all features!</i>",
+        caption=f"📖 <b>{bot_name} Command Diary</b> 🌸\n\n<i>Select a category below to explore all features!</i>",
         parse_mode=ParseMode.HTML,
         reply_markup=get_help_keyboard()
     )
@@ -194,5 +198,6 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     try: await query.message.edit_media(InputMediaPhoto(media=target_photo, caption=text, parse_mode=ParseMode.HTML), reply_markup=kb)
     except: await query.message.edit_caption(caption=text, parse_mode=ParseMode.HTML, reply_markup=kb)
+
 
 
