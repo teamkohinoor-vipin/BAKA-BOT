@@ -41,7 +41,7 @@ from baka.utils import track_group, log_to_channel, BOT_NAME
 from baka.plugins import (
     start, economy, game, admin, broadcast, fun, events, 
     welcome, ping, chatbot, riddle, social, ai_media, 
-    waifu, collection, shop, daily, nsfw, anonymous_secrets
+    waifu, collection, shop, daily, anonymous_secrets
 )
 
 # --- FLASK SERVER (Health Check) ---
@@ -234,9 +234,6 @@ if __name__ == '__main__':
         
         # --- EVENTS & MESSAGE LISTENERS (ORDER IS CRITICAL) ---
         
-        # 0. NSFW Detection - Group 0 (Highest Priority - Delete NSFW content first)
-        app_bot.add_handler(MessageHandler(filters.ALL & filters.ChatType.GROUPS & ~filters.COMMAND, nsfw.nsfw_handler), group=0)
-        
         # 1. Chat Member Updates (Join/Left Logs)
         app_bot.add_handler(ChatMemberHandler(events.chat_member_update, ChatMemberHandler.MY_CHAT_MEMBER))
         
@@ -271,3 +268,4 @@ if __name__ == '__main__':
         
         # 8. Start Polling
         app_bot.run_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
+
