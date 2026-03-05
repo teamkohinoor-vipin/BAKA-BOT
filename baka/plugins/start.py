@@ -89,7 +89,7 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if data == "help_main":
         try: await query.message.edit_media(InputMediaPhoto(media=HELP_IMG_URL, caption=f"📖 <b>{BOT_NAME} 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐃𝐢𝐚𝐫𝐲</b> 🌸\n\n<i>Select a category below to explore all features!</i>", parse_mode=ParseMode.HTML), reply_markup=get_help_keyboard())
-        except: await query.message.edit_caption(caption=f"📖 <b>{BOT_NAME} 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐃𝐢𝐚𝐫𝐲</b> 🌸\n\n<i>Select a category below to explore all features!</i>", parse_mode=ParseMode.HTML, reply_markup=get_help_keyboard())
+        except: await query.message.edit_caption(caption=f"📖 <b>{bot_name} 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐃𝐢𝐚𝐫𝐲</b> 🌸\n\n<i>Select a category below to explore all features!</i>", parse_mode=ParseMode.HTML, reply_markup=get_help_keyboard())
         return
 
     target_photo = HELP_IMG_URL
@@ -198,6 +198,7 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     try: await query.message.edit_media(InputMediaPhoto(media=target_photo, caption=text, parse_mode=ParseMode.HTML), reply_markup=kb)
     except: await query.message.edit_caption(caption=text, parse_mode=ParseMode.HTML, reply_markup=kb)
+
 
 
 
