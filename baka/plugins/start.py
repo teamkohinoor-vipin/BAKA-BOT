@@ -106,8 +106,8 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode=ParseMode.HTML,
             reply_markup=get_help_keyboard()
         )
-        return
 
+    return
     target_photo = HELP_IMG_URL
     kb = get_back_keyboard()
     text = ""
@@ -214,6 +214,7 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     try: await query.message.edit_media(InputMediaPhoto(media=target_photo, caption=text, parse_mode=ParseMode.HTML), reply_markup=kb)
     except: await query.message.edit_caption(caption=text, parse_mode=ParseMode.HTML, reply_markup=kb)
+
 
 
 
