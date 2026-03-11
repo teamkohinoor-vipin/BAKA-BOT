@@ -154,6 +154,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     query = update.callback_query
+    await query.answer()  # ⭐ FIX ADDED
     data = query.data
 
     bot_name = context.bot.first_name
@@ -192,13 +193,9 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = (
             "💍 <b>𝐒𝐨𝐜𝐢𝐚𝐥 & 𝐋𝐨𝐯𝐞</b>\n\n"
             "<b>/propose @user</b>\n"
-            "↳ Marry someone\n\n"
             "<b>/marry</b>\n"
-            "↳ Check relationship status\n\n"
             "<b>/divorce</b>\n"
-            "↳ Break up\n\n"
-            "<b>/couple</b>\n"
-            "↳ Matchmaking Fun"
+            "<b>/couple</b>"
         )
 
     elif data == "help_economy":
@@ -206,7 +203,7 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "💰 <b>𝐄𝐜𝐨𝐧𝐨𝐦𝐲</b>\n\n"
             "<b>/bal</b>\n"
             "<b>/shop</b>\n"
-            "<b>/give [amt] [user]</b>\n"
+            "<b>/give</b>\n"
             "<b>/claim</b>\n"
             "<b>/daily</b>\n"
             "<b>/ranking</b>"
@@ -215,45 +212,27 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif data == "help_rpg":
         text = (
             "⚔️ <b>𝐑𝐏𝐆</b>\n\n"
-            "<b>/kill [user]</b>\n"
-            "<b>/rob [amt] [user]</b>\n"
-            "<b>/protect 1d</b>\n"
+            "<b>/kill</b>\n"
+            "<b>/rob</b>\n"
+            "<b>/protect</b>\n"
             "<b>/revive</b>"
         )
 
     elif data == "help_fun":
         text = (
             "🧠 <b>𝐀𝐈 & 𝐅𝐮𝐧</b>\n\n"
-            "<b>/draw [prompt]</b>\n"
-            "<b>/speak [text]</b>\n"
+            "<b>/draw</b>\n"
+            "<b>/speak</b>\n"
             "<b>/chatbot</b>\n"
             "<b>/riddle</b>\n"
             "<b>/dice</b>\n"
             "<b>/slots</b>"
         )
 
-    elif data == "help_anonymous":
-        text = (
-            "🔒 <b>𝐀𝐧𝐨𝐧𝐲𝐦𝐨𝐮𝐬</b>\n\n"
-            "<b>/secret @user message</b>\n"
-            "<b>/confess message</b>\n"
-            "<b>/crush @user</b>\n"
-            "<b>/roast @user</b>\n"
-            "<b>/truthordare</b>\n"
-            "<b>/wyr</b>\n"
-            "<b>/neverhaveiever</b>\n"
-            "<b>/hotornot @user</b>\n"
-            "<b>/rate @user</b>\n"
-            "<b>/compliment @user</b>\n"
-            "<b>/story text</b>\n"
-            "<b>/continue text</b>\n"
-            "<b>/spoll q | opt1 | opt2</b>"
-        )
-
     elif data == "help_group":
         text = (
             "⚙️ <b>𝐆𝐫𝐨𝐮𝐩</b>\n\n"
-            "<b>/welcome on/off</b>\n"
+            "<b>/welcome</b>\n"
             "<b>/ping</b>"
         )
 
@@ -288,7 +267,6 @@ async def help_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
     except:
-
         await query.message.edit_caption(
             caption=text,
             parse_mode=ParseMode.HTML,
